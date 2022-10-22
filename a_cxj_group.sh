@@ -1,12 +1,9 @@
 #!/bin/bash
-# new Env('BBK-小魔方');
-# cron 31 13 * * * a_xiaomofang.sh
+# new Env('BBK-穿行记组队');
 # export JD_LOG_XYZ_TOKEN="从机器人获取的token"
 # export Proxy_Url="代理网址 例如：星空、熊猫 生成选择txt 一次一个"
-# export XIAOMOFANG_DELAY="2" #等待几秒 默认0秒 可选参数,可以不填。
-# export XIAOMOFANG_EXCHANGES="1;3;6" #兑换几魔方 默认兑换3魔方 可选参数
-# export XIAOMOFANG_PROXY="true" #黑IP自动使用代理 默认不用代理 可选参数,可以不填。
-# export XIAOMOFANG_USE_PROXY="true" #强制使用代理 默认不用代理 可选参数,可以不填。
+# export CXJ_GROUP_PINS="jd_xxx&jd_xxx"# 指定pin组队，多个用英文&分割
+# 支持CXJ_GROUP_PINS 或者 链接方式(`cxj_group_list.txt`存放需要组队的URL,一行一个)
 pwd
 _ftype=""
 get_arch=`arch`
@@ -32,7 +29,7 @@ else
     if [ -f "$PWD/BBK/$_ftype.bbk" ]; then
         echo "$PWD/BBK/$_ftype.bbk"
         eval "chmod +x ./BBK/$_ftype.bbk"
-        eval "./BBK/$_ftype.bbk -t xiaomofang"
+        eval "./BBK/$_ftype.bbk -t cxj_group"
     else
         if [ ! -f "$PWD/$_ftype.bbk" ]; then
             echo "在$PWD/BBK目录、$PWD目录下均未找到文件$_ftype.bbk"
@@ -40,6 +37,6 @@ else
         fi
         echo "$PWD/$_ftype.bbk"
         eval "chmod +x $PWD/$_ftype.bbk"
-        eval "$PWD/$_ftype.bbk -t xiaomofang"
+        eval "$PWD/$_ftype.bbk -t cxj_group"
     fi
 fi
